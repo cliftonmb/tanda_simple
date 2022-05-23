@@ -1,0 +1,53 @@
+### CREATE Users (signup)
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "name": "Test name",
+    "email": "test@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### CREATE Sessions (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password"
+}
+
+### INDEX Organizations
+GET http://localhost:3000/organizations.json
+
+### CREATE Organizations
+POST http://localhost:3000/organizations.json
+Content-Type: application/json
+
+{
+  "name": "Bob's Burgers",
+  "hourly_rate": 23
+}
+
+### UPDATE Organizations
+POST http://localhost:3000/organizations.json
+Content-Type: application/json
+
+{
+  "name": "Bob's Burgers",
+  "hourly_rate": 24
+}
+
+### CREATE Shifts
+POST http://localhost:3000/shifts.json
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "start": "2022-05-22 13:00:00",
+  "finish": "2022-05-22 16:00:00",
+  "break_length": 60
+}
+
+# YYYY-MM-DD HH:MM:SS
