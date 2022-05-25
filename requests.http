@@ -3,10 +3,20 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Test name",
-    "email": "test@test.com",
+  "name": "Michele",
+  "email_address": "michele2@email.com",
   "password": "password",
   "password_confirmation": "password"
+}
+
+### UPDATECREATE Users (change password)
+PATCH http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "email_address": "michele2@email.com",
+  "password": "password1",
+  "password_confirmation": "password1"
 }
 
 ### CREATE Sessions (login)
@@ -14,8 +24,8 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
-  "password": "password"
+  "email_address": "michele2@email.com",
+  "password": "password2"
 }
 
 ### INDEX Organizations
@@ -31,7 +41,7 @@ Content-Type: application/json
 }
 
 ### UPDATE Organizations
-POST http://localhost:3000/organizations.json
+PATCH http://localhost:3000/organizations/1.json
 Content-Type: application/json
 
 {
@@ -39,15 +49,25 @@ Content-Type: application/json
   "hourly_rate": 24
 }
 
+### INDEX Shifts
+GET http://localhost:3000/shifts.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTM1MTI1Mzh9.MGqwiU3wNbwOsCc8khG9L0kCbyCyhbZx-y5M32r0f9k
+Content-Type: application/json
+
 ### CREATE Shifts
 POST http://localhost:3000/shifts.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTM1MTI1Mzh9.MGqwiU3wNbwOsCc8khG9L0kCbyCyhbZx-y5M32r0f9k
 Content-Type: application/json
 
 {
-  "user_id": 1,
+  "user_id": 7,
   "start": "2022-05-22 13:00:00",
   "finish": "2022-05-22 16:00:00",
   "break_length": 60
 }
 
+### DESTROY Shifts
+DELETE http://localhost:3000/shifts.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTM1MTI1Mzh9.MGqwiU3wNbwOsCc8khG9L0kCbyCyhbZx-y5M32r0f9k
+Content-Type: application/json
 # YYYY-MM-DD HH:MM:SS

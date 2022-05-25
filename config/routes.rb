@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   post "/users" => "users#create"
+  patch "/users" => "users#update"
 
   post "/sessions" => "sessions#create"
   
   get "/organizations" => "organizations#index"
   post "/organizations" => "organizations#create"
-  patch "/organizations" => "organizations#update"
+  patch "/organizations/:id" => "organizations#update"
 
   get "/shifts" => "shifts#index"
   post "/shifts" => "shifts#create"
+  delete "/shifts" => "shifts#destroy"
 end
