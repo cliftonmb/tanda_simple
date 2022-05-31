@@ -1,8 +1,8 @@
 class ShiftsController < ApplicationController
 
   def index
-    shifts = Shift.where(user_id: current_user.id)
-    render json: shifts
+    shifts = Shift.all
+    render json: shifts.sort_by(&:start)
   end
 
   def create
@@ -18,6 +18,7 @@ class ShiftsController < ApplicationController
 
   def destroy
     shifts = Shift.where(user_id: current_user.id)
+    # shifts = Shift.all
     shifts.delete shifts
     render json: {message: "All shifts deleted"}
   end

@@ -4,6 +4,11 @@ class OrganizationsController < ApplicationController
     organizations = Organization.all 
     render json: organizations
   end
+
+  def show
+    organization = Organization.find_by(id: params[:id])
+    render json: organization
+  end
   
   def create
     organization = Organization.new(
@@ -20,5 +25,11 @@ class OrganizationsController < ApplicationController
     organization.hourly_rate = params[:hourly_rate] || organization.hourly_rate
     organization.save
     render json: organization
+  end
+
+  def destroy
+    organization = Organization.find_by(id: params[:id])
+    organization.delete
+    render json: {message: "Organization Deleted"}
   end
 end
